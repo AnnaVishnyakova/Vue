@@ -10,7 +10,10 @@
     <button v-on:click="plus(operand1,operand2)">+</button>
     <button v-on:click="minus(operand1,operand2)">-</button>
     <button @click="multiplication(operand1,operand2)">*</button>
-    <button @click="division(operand1,operand2)">/</button>
+    
+    <p>Реализован IF через методы<button @click="division(operand1,operand2)">/</button></p>
+
+   <p>Реализован IF в самой кнопке <button @click="operand2>0?division2(operand1,operand2):errorText()">/</button></p>
 
      
   </div>
@@ -31,7 +34,7 @@ export default {
       operand2:0,
       result:0,
       text: ' ',
-       visible: true
+       
     }
   },
   methods:{
@@ -54,6 +57,18 @@ export default {
       } else{
         this.text= 'операция невозможна'
       }
+    },
+
+    division2(op1,op2){
+     
+        this.result= Math.floor(op1 / op2)
+        this.text='done' //целочисленное деление
+        
+      
+    },
+    errorText(){
+      this.result=0
+      this.text='error' 
     }
 
   }
